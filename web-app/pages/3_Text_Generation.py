@@ -55,8 +55,7 @@ with st.spinner("Retrieving configurations..."):
 
 
     queries = ("write a summary",
-                "What troubleshooting steps were suggested to the customer to fix their iPhone charging issue?",
-                "Was resetting the iPhone to its default settings able to solve the charging issue and battery drain problem?",
+                "What steps were suggested to the customer to fix the issue?",
                 "What is the overall sentiment and sentiment score of the conversation between the customer and the agent")
 
     selection = st.selectbox(
