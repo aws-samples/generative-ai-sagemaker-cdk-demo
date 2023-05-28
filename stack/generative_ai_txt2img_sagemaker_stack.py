@@ -16,40 +16,44 @@ class GenerativeAiTxt2imgSagemakerStack(Stack):
         role = iam.Role(self, "Gen-AI-SageMaker-Policy", assumed_by=iam.ServicePrincipal("sagemaker.amazonaws.com"))
         role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AmazonS3FullAccess"))
         
-        role.attach_inline_policy(iam.Policy(self, "sm-deploy-policy-sts",
-            statements=[iam.PolicyStatement(
-                effect=iam.Effect.ALLOW,
-                actions=[
-                    "sts:AssumeRole"
-                  ],
-                resources=["*"]
-            )]
-        ))        
+        sts_policy = iam.Policy(self, "sm-deploy-policy-sts",
+                                    statements=[iam.PolicyStatement(
+                                        effect=iam.Effect.ALLOW,
+                                        actions=[
+                                            "sts:AssumeRole"
+                                          ],
+                                        resources=["*"]
+                                    )]
+                                )
 
-        role.attach_inline_policy(iam.Policy(self, "sm-deploy-policy-logs",
-            statements=[iam.PolicyStatement(
-                effect=iam.Effect.ALLOW,
-                actions=[
-                    "cloudwatch:PutMetricData",
-                    "logs:CreateLogStream",
-                    "logs:PutLogEvents",
-                    "logs:CreateLogGroup",
-                    "logs:DescribeLogStreams",
-                    "ecr:GetAuthorizationToken"
-                  ],
-                resources=["*"]
-            )]
-        ))
+        logs_policy = iam.Policy(self, "sm-deploy-policy-logs",
+                                    statements=[iam.PolicyStatement(
+                                        effect=iam.Effect.ALLOW,
+                                        actions=[
+                                            "cloudwatch:PutMetricData",
+                                            "logs:CreateLogStream",
+                                            "logs:PutLogEvents",
+                                            "logs:CreateLogGroup",
+                                            "logs:DescribeLogStreams",
+                                            "ecr:GetAuthorizationToken"
+                                          ],
+                                        resources=["*"]
+                                    )]
+                                )
         
-        role.attach_inline_policy(iam.Policy(self, "sm-deploy-policy-ecr",
-            statements=[iam.PolicyStatement(
-                effect=iam.Effect.ALLOW,
-                actions=[
-                    "ecr:*",
-                  ],
-                resources=["*"]
-            )]
-        ))            
+        ecr_policy = iam.Policy(self, "sm-deploy-policy-ecr",
+                                    statements=[iam.PolicyStatement(
+                                        effect=iam.Effect.ALLOW,
+                                        actions=[
+                                            "ecr:*",
+                                          ],
+                                        resources=["*"]
+                                    )]
+                                )
+                                
+        role.attach_inline_policy(sts_policy)
+        role.attach_inline_policy(logs_policy)
+        role.attach_inline_policy(ecr_policy)
         
         endpoint = SageMakerEndpointConstruct(self, "TXT2IMG",
                                     project_prefix = "GenerativeAiDemo",
@@ -76,5 +80,9 @@ class GenerativeAiTxt2imgSagemakerStack(Stack):
 
                                     deploy_enable = True
         )
+        
+        endpoint.node.add_dependency(sts_policy)
+        endpoint.node.add_dependency(logs_policy)
+        endpoint.node.add_dependency(ecr_policy)
         
         ssm.StringParameter(self, "txt2img_sm_endpoint", parameter_name="txt2img_sm_endpoint", string_value=endpoint.endpoint_name)
