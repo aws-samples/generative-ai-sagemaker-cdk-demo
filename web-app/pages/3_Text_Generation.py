@@ -56,7 +56,7 @@ with st.spinner("Retrieving configurations..."):
 
     queries = ("write a summary",
                 "What steps were suggested to the customer to fix the issue?",
-                "What is the overall sentiment and sentiment score of the conversation between the customer and the agent")
+                "What is the overall sentiment and sentiment score of the conversation between the customer and the agent?")
 
     selection = st.selectbox(
         "Select a query:", queries)
