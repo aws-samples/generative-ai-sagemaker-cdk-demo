@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM --platform=linux/x86_64 python:3.9
 EXPOSE 8501
 WORKDIR /app
 COPY requirements.txt ./requirements.txt
