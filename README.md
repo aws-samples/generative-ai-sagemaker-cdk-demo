@@ -667,7 +667,7 @@ See [/stack/generative_ai_txt2nlu_sagemaker_stack.py](./stack/generative_ai_txt2
 The web application is located in the [/web-app](./web-app) directory. It is a Streamlit application that is containerized as per the [Dockerfile](./web-app/Dockerfile):
 
 ```dockerfile
-FROM python:3.9
+FROM --platform=linux/x86_64 python:3.9
 EXPOSE 8501
 WORKDIR /app
 COPY requirements.txt ./requirements.txt
