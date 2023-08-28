@@ -14,7 +14,7 @@ env={"region": region_name}
 
 #Text to Image model parameters
 TXT2IMG_MODEL_ID = "model-txt2img-stabilityai-stable-diffusion-v2-1-base"
-TXT2IMG_INFERENCE_INSTANCE_TYPE = "ml.g4dn.4xlarge" 
+TXT2IMG_INFERENCE_INSTANCE_TYPE = "ml.p3.2xlarge" #if your region does not support this instance type, try ml.g4dn.4xlarge 
 TXT2IMG_MODEL_TASK_TYPE = "txt2img"
 TXT2IMG_MODEL_INFO = get_sagemaker_uris(model_id=TXT2IMG_MODEL_ID,
                                         model_task_type=TXT2IMG_MODEL_TASK_TYPE, 
