@@ -228,8 +228,11 @@ The AWS CDK application contains multiple stacks as shown in the following diagr
 You can list stacks in your CDK application with the following command:
 
 ```bash
-$ cdk list
+cdk list
+```
+You should get the following output:
 
+```
 GenerativeAiTxt2imgSagemakerStack
 GenerativeAiTxt2nluSagemakerStack
 GenerativeAiVpcNetworkStack
