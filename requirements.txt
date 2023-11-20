@@ -6,4 +6,4 @@ requests
 jinja2
 matplotlib
 boto3
-sagemaker
+sagemaker==2.160.0
