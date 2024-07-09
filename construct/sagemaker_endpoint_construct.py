@@ -27,11 +27,19 @@ class SageMakerEndpointConstruct(Construct):
                            containers=[
                                sagemaker.CfnModel.ContainerDefinitionProperty(
                                         image= model_docker_image,
-                                        model_data_url= f"s3://{model_bucket_name}/{model_bucket_key}",
-                                        environment= environment
+                                        environment= environment,
+                                        mode="SingleModel",
+
+                                        model_data_source = sagemaker.CfnModel.ModelDataSourceProperty(
+                                            s3_data_source = sagemaker.CfnModel.S3DataSourceProperty(
+                                                compression_type="None",
+                                                s3_data_type="S3Prefix",
+                                                s3_uri=f"s3://{model_bucket_name}/{model_bucket_key}",
+                                            )
+                                        ),
                                     )
                                ],
-                           model_name= f"{project_prefix}-{model_name}-Model"
+                            model_name= f"{project_prefix}-{model_name}-Model",
         )
         
         config = sagemaker.CfnEndpointConfig(self, f"{model_name}-Config",

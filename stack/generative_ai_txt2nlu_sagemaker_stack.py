@@ -70,7 +70,8 @@ class GenerativeAiTxt2nluSagemakerStack(Stack):
                                     instance_type = model_info["instance_type"],
 
                                     environment = {
-                                        "MODEL_CACHE_ROOT": "/opt/ml/model",
+                                        "MODEL_CACHE_ROOT": "/opt/ml/model", 
+                                        "HF_MODEL_ID": "/opt/ml/model",
                                         "SAGEMAKER_ENV": "1",
                                         "SAGEMAKER_MODEL_SERVER_TIMEOUT": "3600",
                                         "SAGEMAKER_MODEL_SERVER_WORKERS": "1",
