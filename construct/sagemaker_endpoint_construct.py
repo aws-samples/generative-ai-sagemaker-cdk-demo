@@ -23,9 +23,9 @@ class SageMakerEndpointConstruct(Construct):
         super().__init__(scope, construct_id)
         
         model = sagemaker.CfnModel(self, f"{model_name}-Model",
-                           execution_role_arn= role_arn,
-                           containers=[
-                               sagemaker.CfnModel.ContainerDefinitionProperty(
+                            execution_role_arn= role_arn,
+                            containers=[
+                                sagemaker.CfnModel.ContainerDefinitionProperty(
                                         image= model_docker_image,
                                         environment= environment,
                                         mode="SingleModel",
@@ -38,7 +38,7 @@ class SageMakerEndpointConstruct(Construct):
                                             )
                                         ),
                                     )
-                               ],
+                                ],
                             model_name= f"{project_prefix}-{model_name}-Model",
         )
         
