@@ -8,6 +8,7 @@ from aws_cdk import (
     aws_ssm as ssm,
     aws_ecs as ecs,
     aws_ecs_patterns as ecs_patterns,
+    aws_autoscaling as autoscaling,
 )
 from constructs import Construct
 
@@ -73,16 +74,64 @@ class GenerativeAiDemoWebStack(Stack):
         # Create ECS cluster
         cluster = ecs.Cluster(self, "WebDemoCluster", vpc=vpc)
 
-        # Add an AutoScalingGroup with spot instances to the existing cluster
-        cluster.add_capacity("AsgSpot",
-            max_capacity=2,
-            min_capacity=1,
-            desired_capacity=2,
+        # Create an IAM role for the EC2 instances
+        instance_role = iam.Role(
+            self, "EcsInstanceRole",
+            assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"),
+            managed_policies=[
+                iam.ManagedPolicy.from_aws_managed_policy_name("service-role/AmazonEC2ContainerServiceforEC2Role"),
+                iam.ManagedPolicy.from_aws_managed_policy_name("AmazonSSMManagedInstanceCore") # Optional: for SSM agent
+            ]
+        )
+
+        # Create a launch template
+        user_data = ec2.UserData.for_linux()
+        user_data.add_commands(
+            f"echo ECS_CLUSTER={cluster.cluster_name} >> /etc/ecs/ecs.config",
+            "sudo iptables --insert FORWARD 1 --in-interface docker+ --destination 169.254.169.254/32 --jump DROP",
+            "sudo service iptables save",
+            "echo ECS_AWSVPC_BLOCK_IMDS=true >> /etc/ecs/ecs.config"
+        )
+        
+        # Create the launch template
+        launch_template = ec2.LaunchTemplate(
+            self, "EcsSpotLaunchTemplate",
+            launch_template_name="EcsSpotLaunchTemplate",
             instance_type=ec2.InstanceType("c5.xlarge"),
-            spot_price="0.0735",
-            # Enable the Automated Spot Draining support for Amazon ECS
+            machine_image=ecs.EcsOptimizedImage.amazon_linux2(),
+            user_data=user_data,
+            role=instance_role, # Assign the role to the launch template
+            block_devices=[
+                ec2.BlockDevice(
+                    device_name="/dev/xvda",
+                    volume=ec2.BlockDeviceVolume.ebs(30) # Increased from 20 to 30 GB to match the snapshot size requirements
+                )
+            ],
+            # Add Spot options with ONE_TIME request type (required for AutoScaling)
+            spot_options=ec2.LaunchTemplateSpotOptions(
+                max_price=0.0735, # Set max price for Spot Instances
+                request_type=ec2.SpotRequestType.ONE_TIME # Changed from PERSISTENT to ONE_TIME as required by AutoScaling
+            )
+        )
+        
+        # Create the Auto Scaling Group with the launch template
+        asg = autoscaling.AutoScalingGroup(
+            self, "AsgSpotNew",  # Changed ID to ensure a new resource is created
+            vpc=vpc,
+            min_capacity=1,
+            max_capacity=2,
+            desired_capacity=2,
+            launch_template=launch_template,  # Use the launch template instead of instance properties
+        )
+        
+        # Add the ASG capacity to the ECS cluster
+        capacity_provider = ecs.AsgCapacityProvider(
+            self, "AsgCapacityProvider",
+            auto_scaling_group=asg,
+            enable_managed_termination_protection=False,
             spot_instance_draining=True
         )
+        cluster.add_asg_capacity_provider(capacity_provider)
 
         # Build Dockerfile from local folder and push to ECR
         image = ecs.ContainerImage.from_asset("web-app")
