@@ -1,9 +1,8 @@
-
 # Deploy generative AI models from Amazon SageMaker JumpStart using the AWS CDK
 
 The seeds of a machine learning (ML) paradigm shift have existed for decades, but with the ready availability of virtually infinite compute capacity, a massive proliferation of data, and the rapid advancement of ML technologies, customers across industries are rapidly adopting and using ML technologies to transform their businesses. 
 
-Just recently, generative AI applications have captured everyone’s attention and imagination. We are truly at an exciting inflection point in the widespread adoption of ML, and we believe every customer experience and application will be reinvented with generative AI. 
+Just recently, generative AI applications have captured everyone's attention and imagination. We are truly at an exciting inflection point in the widespread adoption of ML, and we believe every customer experience and application will be reinvented with generative AI. 
 
 Generative AI is a type of AI that can create new content and ideas, including conversations, stories, images, videos, and music. Like all AI, generative AI is powered by ML models—very large models that are pre-trained on vast corpora of data and commonly referred to as foundation models (FMs).  
 
@@ -27,7 +26,7 @@ With over 600 pre-trained models available and growing every day, JumpStart enab
 
  
 
-In April 2023, AWS unveiled [Amazon Bedrock](https://aws.amazon.com/bedrock/), which provides a way to build generative AI-powered apps via pre-trained models from startups including [AI21 Labs](https://www.ai21.com/), [Anthropic](https://techcrunch.com/2023/02/27/anthropic-begins-supplying-its-text-generating-ai-models-to-startups/), and [Stability AI](https://techcrunch.com/2022/10/17/stability-ai-the-startup-behind-stable-diffusion-raises-101m/). Amazon Bedrock also offers access to Titan foundation models, a family of models trained in-house by AWS. With the serverless experience of Amazon Bedrock, you can easily find the right model for your needs, get started quickly, privately customize FMs with your own data, and easily integrate and deploy them into your applications using the AWS tools and capabilities you’re familiar with (including integrations with SageMaker ML features like [Amazon SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html) to test different models and [Amazon SageMaker Pipelines](https://aws.amazon.com/sagemaker/pipelines/) to manage your FMs at scale) without having to manage any infrastructure.
+In April 2023, AWS unveiled [Amazon Bedrock](https://aws.amazon.com/bedrock/), which provides a way to build generative AI-powered apps via pre-trained models from startups including [AI21 Labs](https://www.ai21.com/), [Anthropic](https://techcrunch.com/2023/02/27/anthropic-begins-supplying-its-text-generating-ai-models-to-startups/), and [Stability AI](https://techcrunch.com/2022/10/17/stability-ai-the-startup-behind-stable-diffusion-raises-101m/). Amazon Bedrock also offers access to Titan foundation models, a family of models trained in-house by AWS. With the serverless experience of Amazon Bedrock, you can easily find the right model for your needs, get started quickly, privately customize FMs with your own data, and easily integrate and deploy them into your applications using the AWS tools and capabilities you're familiar with (including integrations with SageMaker ML features like [Amazon SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html) to test different models and [Amazon SageMaker Pipelines](https://aws.amazon.com/sagemaker/pipelines/) to manage your FMs at scale) without having to manage any infrastructure.
 
  
 
@@ -81,7 +80,7 @@ The estimated cost to complete this post is $50, assuming you leave the resource
 
 ## Install the AWS CLI and AWS CDK on your local machine
 
-If you don’t already have the AWS CLI on your local machine, refer to [Installing or updating the latest version of the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) and [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
+If you don't already have the AWS CLI on your local machine, refer to [Installing or updating the latest version of the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) and [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 
 Install the AWS CDK Toolkit globally using the following node package manager command:
 
@@ -185,7 +184,7 @@ Use the following command to activate the virtual environment:
 source .venv/bin/activate
 ```
 
-If you’re on a Windows platform, activate the virtual environment as follows:
+If you're on a Windows platform, activate the virtual environment as follows:
 
 ```
 .venv\Scripts\activate.bat
@@ -203,7 +202,7 @@ Install the required dependencies:
 pip install -r requirements.txt
 ```
 
-Before you deploy any AWS CDK application, you need to bootstrap a space in your account and the Region you’re deploying into. To bootstrap in your default Region, issue the following command:
+Before you deploy any AWS CDK application, you need to bootstrap a space in your account and the Region you're deploying into. To bootstrap in your default Region, issue the following command:
 
 ```
 cdk bootstrap
@@ -303,7 +302,7 @@ The first example demonstrates how to utilize Stable Diffusion, a powerful gener
 
 2. In the navigation pane, choose **Image Generation**.
 
-3. The **SageMaker Endpoint Name** and **API GW Url** fields will be pre-populated, but you can change the prompt for the image description if you’d like. 
+3. The **SageMaker Endpoint Name** and **API GW Url** fields will be pre-populated, but you can change the prompt for the image description if you'd like. 
 4. Choose **Generate image**.
 
 ![streamlit-03](./images/streamlit-image-gen-01.png)
@@ -339,7 +338,7 @@ Enter `y` at the prompts.
 After the text generation model endpoint stack is launched, complete the following steps:
 
 1. Go back to the web application and choose **Text Generation** in the navigation pane.
-2. The **Input Context** field is pre-populated with a conversation between a customer and an agent regarding an issue with the customers phone, but you can enter your own context if you’d like.
+2. The **Input Context** field is pre-populated with a conversation between a customer and an agent regarding an issue with the customers phone, but you can enter your own context if you'd like.
 
 ![streamlit-05](./images/streamlit-text-gen-01.png)
 
@@ -423,7 +422,7 @@ This sample code is made available under a modified MIT license. See the [LICENS
 
 ## About Authors
 
-**Hantzley Tauckoor** is an APJ Partner Solutions Architecture Leader based in  Singapore. He has 20 years’ experience in the ICT industry spanning multiple  functional areas, including solutions architecture, business development,  sales strategy, consulting, and leadership. He leads a team of Senior  Solutions Architects that enable partners to develop joint solutions, build  technical capabilities, and steer them through the implementation phase as  customers migrate and modernize their applications to AWS. Outside work, he  enjoys spending time with his family, watching movies, and hiking.  
+**Hantzley Tauckoor** is an APJ Partner Solutions Architecture Leader based in  Singapore. He has 20 years' experience in the ICT industry spanning multiple  functional areas, including solutions architecture, business development,  sales strategy, consulting, and leadership. He leads a team of Senior  Solutions Architects that enable partners to develop joint solutions, build  technical capabilities, and steer them through the implementation phase as  customers migrate and modernize their applications to AWS. Outside work, he  enjoys spending time with his family, watching movies, and hiking.  
 
 
 
@@ -441,62 +440,46 @@ This sample code is made available under a modified MIT license. See the [LICENS
 
 ## Appendix: Code walk-through
 
-In this section, we provide an overview of the code in this project. 
+In this section, we provide an overview of the code in this project.
 
+### AWS CDK Application
 
-
-**AWS CDK Application**
-
-The main AWS CDK application is contained in the `app.py` file in the root directory. The project consists of multiple stacks, so we have to import the stacks:
+The main AWS CDK application is contained in the `app.py` file in the root directory. The project consists of multiple stacks, and we import them with proper logging configuration:
 
 ```python
 #!/usr/bin/env python3
 import aws_cdk as cdk
+import logging
+import warnings
+
+# Configure logging levels to suppress unnecessary messages
+logging.getLogger('sagemaker.config').setLevel(logging.ERROR)
+logging.getLogger('botocore.credentials').setLevel(logging.ERROR)
+warnings.filterwarnings("ignore", message="Field name \"json\" in \"MonitoringDatasetFormat\" shadows an attribute in parent \"Base\"")
 
 from stack.generative_ai_vpc_network_stack import GenerativeAiVpcNetworkStack
 from stack.generative_ai_demo_web_stack import GenerativeAiDemoWebStack
 from stack.generative_ai_txt2nlu_sagemaker_stack import GenerativeAiTxt2nluSagemakerStack
 from stack.generative_ai_txt2img_sagemaker_stack import GenerativeAiTxt2imgSagemakerStack
-
 ```
 
-
-
-We define our generative AI models and get the related URIs from SageMaker:
+We define our generative AI models with specific versions and get the related URIs from SageMaker:
 
 ```python
-from script.sagemaker_uri import *
-import boto3
-
-region_name = boto3.Session().region_name
-env={"region": region_name}
-
 #Text to Image model parameters
 TXT2IMG_MODEL_ID = "model-txt2img-stabilityai-stable-diffusion-v2-1-base"
-TXT2IMG_INFERENCE_INSTANCE_TYPE = "ml.g4dn.4xlarge" 
+TXT2IMG_INFERENCE_INSTANCE_TYPE = "ml.p3.2xlarge"  # Fallback to ml.g4dn.4xlarge if not supported
 TXT2IMG_MODEL_TASK_TYPE = "txt2img"
-TXT2IMG_MODEL_INFO = get_sagemaker_uris(model_id=TXT2IMG_MODEL_ID,
-                                        model_task_type=TXT2IMG_MODEL_TASK_TYPE, 
-                                        instance_type=TXT2IMG_INFERENCE_INSTANCE_TYPE,
-                                        region_name=region_name)
+TXT2IMG_MODEL_VERSION = "2.0.9"
 
 #Text to NLU image model parameters
 TXT2NLU_MODEL_ID = "huggingface-text2text-flan-t5-xl"
-TXT2NLU_INFERENCE_INSTANCE_TYPE = "ml.g4dn.4xlarge" 
+TXT2NLU_INFERENCE_INSTANCE_TYPE = "ml.g4dn.4xlarge"
 TXT2NLU_MODEL_TASK_TYPE = "text2text"
-TXT2NLU_MODEL_INFO = get_sagemaker_uris(model_id=TXT2NLU_MODEL_ID,
-                                        model_task_type=TXT2NLU_MODEL_TASK_TYPE,
-                                        instance_type=TXT2NLU_INFERENCE_INSTANCE_TYPE,
-                                        region_name=region_name)
+TXT2NLU_MODEL_VERSION = "2.2.2"
 ```
 
-
-
-The function `get_sagemaker_uris` retrieves all the model information from Amazon  JumpStart. See [script/sagemaker_uri.py](./script/sagemaker_uri.py).
-
-
-
-Then, we instantiate the stacks:
+Then, we instantiate the stacks with proper dependencies:
 
 ```python
 app = cdk.App()
@@ -510,164 +493,62 @@ GenerativeAiTxt2imgSagemakerStack(app, "GenerativeAiTxt2imgSagemakerStack", env=
 app.synth()
 ```
 
-The first stack to launch is the VPC stack, `GenerativeAiVpcNetworkStack`. The web application stack, `GenerativeAiDemoWebStack`, is dependent on the VPC stack. The dependency is done through parameter passing `vpc=network_stack.vpc`.
+### VPC Network Stack
 
-See [app.py](./app.py) for the full code.
-
-
-
-**VPC network stack**
-
-In the `GenerativeAiVpcNetworkStack` stack we create a VPC with a public subnet and a private subnet spanning across two Availability Zones (AZs):
+In the `GenerativeAiVpcNetworkStack` stack, we create a VPC with public and private subnets across two Availability Zones (AZs):
 
 ```python
-        self.output_vpc = ec2.Vpc(self, "VPC",
-            nat_gateways=1,
-            ip_addresses=ec2.IpAddresses.cidr("10.0.0.0/16"),
-            max_azs=2,
-            subnet_configuration=[
-                ec2.SubnetConfiguration(name="public",subnet_type=ec2.SubnetType.PUBLIC,cidr_mask=24),
-                ec2.SubnetConfiguration(name="private",subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS,cidr_mask=24)
-            ]
-        )
+self.output_vpc = ec2.Vpc(self, "VPC",
+    nat_gateways=1,
+    ip_addresses=ec2.IpAddresses.cidr("10.0.0.0/16"),
+    max_azs=2,
+    subnet_configuration=[
+        ec2.SubnetConfiguration(name="public", subnet_type=ec2.SubnetType.PUBLIC, cidr_mask=24),
+        ec2.SubnetConfiguration(name="private", subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS, cidr_mask=24)
+    ]
+)
 ```
 
-See  [/stack/generative_ai_vpc_network_stack.py](./stack/generative_ai_vpc_network_stack.py) for the full code.
+### Demo Web Application Stack
 
+The `GenerativeAiDemoWebStack` stack sets up Lambda functions, API Gateway endpoints, and ECS infrastructure:
 
+1. **Lambda Functions and API Gateway**:
+   - Two Lambda functions for image generation and text generation services
+   - Each Lambda has specific IAM roles and VPC configurations
+   - API Gateway endpoints for both services
 
-**Demo web application stack**
+2. **ECS Infrastructure**:
+   - ECS cluster with auto-scaling capabilities
+   - Spot instance configuration for cost optimization
+   - Launch template with specific instance type (c5.xlarge)
+   - Auto Scaling Group with capacity provider
 
-In the `GenerativeAiDemoWebStack` stack we launch  Lambda functions and respective Amazon API Gateway endpoints through which the web application interacts with the SageMaker model endpoints. See the following code snippet:
+3. **Fargate Service**:
+   - Application Load Balancer configuration
+   - Task auto-scaling based on CPU utilization
+   - IAM permissions for SSM and API Gateway access
 
-```python
-        # Defines an AWS Lambda function for Image Generation service
-        lambda_txt2img = _lambda.Function(
-            self, "lambda_txt2img",
-            runtime=_lambda.Runtime.PYTHON_3_9,
-            code=_lambda.Code.from_asset("code/lambda_txt2img"),
-            handler="txt2img.lambda_handler",
-            role=role,
-            timeout=Duration.seconds(180),
-            memory_size=512,
-            vpc_subnets=ec2.SubnetSelection(
-                subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS
-            ),
-            vpc=vpc
-        )
-        
-        # Defines an Amazon API Gateway endpoint for Image Generation service
-        txt2img_apigw_endpoint = apigw.LambdaRestApi(
-            self, "txt2img_apigw_endpoint",
-            handler=lambda_txt2img
-        )
-```
+### SageMaker Endpoint Stacks
 
+Both SageMaker endpoint stacks (`GenerativeAiTxt2imgSagemakerStack` and `GenerativeAiTxt2nluSagemakerStack`) follow a similar pattern:
 
+1. **IAM Configuration**:
+   - SageMaker service role with necessary permissions
+   - STS, CloudWatch Logs, and ECR policies
+   - S3 full access for model artifacts
 
-The web application is containerized and hosted on [Amazon ECS with Fargate](https://docs.aws.amazon.com/AmazonECS/latest/userguide/what-is-fargate.html). See the following code snippet:
+2. **Endpoint Configuration**:
+   - Model-specific environment variables
+   - Instance type and count configuration
+   - Model artifact location and container image settings
 
-```python
-        # Create Fargate service
-        fargate_service = ecs_patterns.ApplicationLoadBalancedFargateService(
-            self, "WebApplication",
-            cluster=cluster,            # Required
-            cpu=2048,                   # Default is 256 (512 is 0.5 vCPU, 2048 is 2 vCPU)
-            desired_count=1,            # Default is 1
-            task_image_options=ecs_patterns.ApplicationLoadBalancedTaskImageOptions(
-                image=image, 
-                container_port=8501,
-                ),
-            #load_balancer_name="gen-ai-demo",
-            memory_limit_mib=4096,      # Default is 512
-            public_load_balancer=True)  # Default is True
-```
+3. **Parameter Store**:
+   - Endpoint names stored in SSM Parameter Store for web application access
 
-See [/stack/generative_ai_demo_web_stack.py](./stack/generative_ai_demo_web_stack.py) for the full code.
+### Web Application
 
-
-
-**Image generation SageMaker model endpoint stack**
-
-The `GenerativeAiTxt2imgSagemakerStack` stack creates the image generation model endpoint from SageMaker JumpStart and stores the endpoint name in [AWS Systems Manager Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html). This parameter will be used by the web application. See the following code:
-
-```python
-        endpoint = SageMakerEndpointConstruct(self, "TXT2IMG",
-                                    project_prefix = "GenerativeAiDemo",
-                                    
-                                    role_arn= role.role_arn,
-
-                                    model_name = "StableDiffusionText2Img",
-                                    model_bucket_name = model_info["model_bucket_name"],
-                                    model_bucket_key = model_info["model_bucket_key"],
-                                    model_docker_image = model_info["model_docker_image"],
-
-                                    variant_name = "AllTraffic",
-                                    variant_weight = 1,
-                                    instance_count = 1,
-                                    instance_type = model_info["instance_type"],
-
-                                    environment = {
-                                        "MMS_MAX_RESPONSE_SIZE": "20000000",
-                                        "SAGEMAKER_CONTAINER_LOG_LEVEL": "20",
-                                        "SAGEMAKER_PROGRAM": "inference.py",
-                                        "SAGEMAKER_REGION": model_info["region_name"],
-                                        "SAGEMAKER_SUBMIT_DIRECTORY": "/opt/ml/model/code",
-                                    },
-
-                                    deploy_enable = True
-        )
-        
-        ssm.StringParameter(self, "txt2img_sm_endpoint", parameter_name="txt2img_sm_endpoint", string_value=endpoint.endpoint_name)
-```
-
-See [/stack/generative_ai_txt2img_sagemaker_stack.py](./stack/generative_ai_txt2img_sagemaker_stack.py) for the full code.
-
-
-
-**NLU and text generation SageMaker model endpoint stack**
-
-The `GenerativeAiTxt2nluSagemakerStack` stack creates the NLU and text generation model endpoint from JumpStart and stores the endpoint name in Systems Manager Parameter Store. This parameter will also be used by the web application. See the following code:
-
-```python
-        endpoint = SageMakerEndpointConstruct(self, "TXT2NLU",
-                                    project_prefix = "GenerativeAiDemo",
-                                    
-                                    role_arn= role.role_arn,
-
-                                    model_name = "HuggingfaceText2TextFlan",
-                                    model_bucket_name = model_info["model_bucket_name"],
-                                    model_bucket_key = model_info["model_bucket_key"],
-                                    model_docker_image = model_info["model_docker_image"],
-
-                                    variant_name = "AllTraffic",
-                                    variant_weight = 1,
-                                    instance_count = 1,
-                                    instance_type = model_info["instance_type"],
-
-                                    environment = {
-                                        "MODEL_CACHE_ROOT": "/opt/ml/model",
-                                        "SAGEMAKER_ENV": "1",
-                                        "SAGEMAKER_MODEL_SERVER_TIMEOUT": "3600",
-                                        "SAGEMAKER_MODEL_SERVER_WORKERS": "1",
-                                        "SAGEMAKER_PROGRAM": "inference.py",
-                                        "SAGEMAKER_SUBMIT_DIRECTORY": "/opt/ml/model/code/",
-                                        "TS_DEFAULT_WORKERS_PER_MODEL": "1"
-                                    },
-
-                                    deploy_enable = True
-        )
-        
-        ssm.StringParameter(self, "txt2nlu_sm_endpoint", parameter_name="txt2nlu_sm_endpoint", string_value=endpoint.endpoint_name)
-```
-
-See [/stack/generative_ai_txt2nlu_sagemaker_stack.py](./stack/generative_ai_txt2nlu_sagemaker_stack.py) for the full code.
-
-
-
-**The Web application**
-
-The web application is located in the [/web-app](./web-app) directory. It is a Streamlit application that is containerized as per the [Dockerfile](./web-app/Dockerfile):
+The web application is containerized and hosted on Amazon ECS with Fargate. The Dockerfile in the `web-app` directory contains the necessary configuration:
 
 ```dockerfile
 FROM --platform=linux/x86_64 python:3.9
@@ -683,5 +564,5 @@ CMD streamlit run Home.py \
     --browser.gatherUsageStats false
 ```
 
-To learn more about Streamlit, see [Streamlit documentation](https://docs.streamlit.io/).
+The application uses Streamlit for the user interface and interacts with the SageMaker endpoints through API Gateway.
 
