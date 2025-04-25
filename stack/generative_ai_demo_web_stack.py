@@ -120,7 +120,7 @@ class GenerativeAiDemoWebStack(Stack):
             vpc=vpc,
             min_capacity=1,
             max_capacity=2,
-            desired_capacity=2,
+            #desired_capacity=2,
             launch_template=launch_template,  # Use the launch template instead of instance properties
         )
         

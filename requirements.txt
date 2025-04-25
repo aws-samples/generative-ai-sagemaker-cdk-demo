@@ -1,10 +1,6 @@
-aws-cdk-lib==2.146.0
+aws-cdk-lib==2.141.0
 constructs>=10.0.0,<11.0.0
 
-streamlit
-requests
-jinja2
-matplotlib
 boto3
-sagemaker==2.237.3
+sagemaker==2.243.3
 setuptools==70.2.0

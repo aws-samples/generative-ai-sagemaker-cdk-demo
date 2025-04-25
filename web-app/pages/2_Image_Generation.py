@@ -1,6 +1,5 @@
 import streamlit as st
 import requests
-import json
 import matplotlib.pyplot as plt
 import numpy as np
 import time

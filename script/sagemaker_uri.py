@@ -7,12 +7,12 @@ from sagemaker.jumpstart.notebook_utils import list_jumpstart_models
 
 session = sagemaker.Session()
 
-def get_sagemaker_uris(model_id,model_task_type,instance_type,region_name):
+def get_sagemaker_uris(model_id,model_task_type,instance_type,model_version,region_name):
     
     FILTER = f"task == {model_task_type}"
     #txt2img_models = list_jumpstart_models(filter=FILTER)
     
-    MODEL_VERSION = "*"  # latest
+    MODEL_VERSION = model_version  # latest = "*"
     SCOPE = "inference"
 
     inference_image_uri = image_uris.retrieve(region=region_name, 
