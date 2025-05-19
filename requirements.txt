@@ -3,4 +3,4 @@ constructs>=10.0.0,<11.0.0
 
 boto3
 sagemaker==2.243.3
-setuptools==70.2.0
+setuptools==78.1.1
